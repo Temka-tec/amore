@@ -1,0 +1,25 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">amare</title>
+  <desc id="desc">A romantic social preview image for the amare app.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBF5F0" />
+      <stop offset="0.5" stop-color="#F5E8E8" />
+      <stop offset="1" stop-color="#EFE0EC" />
+    </linearGradient>
+    <linearGradient id="accent" x1="180" y1="120" x2="1020" y2="510" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C9505A" />
+      <stop offset="1" stop-color="#9B7CC8" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="56" fill="url(#bg)" />
+  <circle cx="205" cy="158" r="118" fill="#F2C4C8" opacity="0.6" />
+  <circle cx="1015" cy="480" r="170" fill="#D4A8DE" opacity="0.35" />
+  <circle cx="890" cy="150" r="94" fill="#F9D4A0" opacity="0.45" />
+  <path d="M392 197C420 163 465 145 514 145H687C736 145 781 163 809 197L856 254C876 278 876 312 856 336L809 393C781 427 736 445 687 445H514C465 445 420 427 392 393L345 336C325 312 325 278 345 254L392 197Z" fill="white" fill-opacity="0.72" stroke="rgba(201,80,90,0.20)" stroke-width="6" />
+  <path d="M360 240L600 362L840 240" stroke="url(#accent)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M360 346L519 278" stroke="url(#accent)" stroke-width="14" stroke-linecap="round" />
+  <path d="M840 346L681 278" stroke="url(#accent)" stroke-width="14" stroke-linecap="round" />
+  <text x="600" y="545" text-anchor="middle" fill="#1A1218" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-style="italic">amare</text>
+  <text x="600" y="594" text-anchor="middle" fill="#7C6670" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="2">THE MOST UNFORGETTABLE WAY TO ASK SOMEONE OUT</text>
+</svg>
