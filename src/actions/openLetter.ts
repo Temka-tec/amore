@@ -1,7 +1,13 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import type { Theme } from "@/lib/utils";
+import { themeList, type Theme } from "@/lib/utils";
+
+function normalizeTheme(theme: string | null | undefined): Theme {
+  return theme && themeList.includes(theme as Theme)
+    ? (theme as Theme)
+    : "pink";
+}
 
 export interface OpenedLetter {
   id: string;
@@ -56,7 +62,7 @@ export async function openLetter(code: string): Promise<OpenedLetter | null> {
     crushName: letter.crushName,
     message: letter.message,
     youtubeId: letter.youtubeId,
-    theme: letter.theme,
+    theme: normalizeTheme(letter.theme),
     location: letter.location || null,
     accepted: letter.accepted,
     selectedDate: letter.selectedDate,
