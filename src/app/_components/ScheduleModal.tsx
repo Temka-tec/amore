@@ -27,7 +27,7 @@ export default function ScheduleModal({ open, onConfirm }: Props) {
   }
 
   const inputCls =
-    "w-full px-4 py-3.5 rounded-xl border-[1.5px] border-[#E8DDE0] bg-[#FDFAFA] text-ink text-[15px] focus:outline-none focus:border-rose focus:ring-2 focus:ring-rose/10 transition";
+    "w-full min-w-0 px-4 py-3.5 rounded-xl border-[1.5px] border-[#E8DDE0] bg-[#FDFAFA] text-ink text-[15px] focus:outline-none focus:border-rose focus:ring-2 focus:ring-rose/10 transition";
 
   return (
     <AnimatePresence>
@@ -42,7 +42,7 @@ export default function ScheduleModal({ open, onConfirm }: Props) {
             initial={{ scale: 0.9, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.9, y: 20 }}
-            className="bg-white rounded-3xl p-10 max-w-md w-full shadow-[0_40px_100px_rgba(0,0,0,0.3)]"
+            className="bg-white rounded-3xl p-6 sm:p-10 max-w-md w-full shadow-[0_40px_100px_rgba(0,0,0,0.3)]"
           >
             <h2 className="font-cormorant font-light italic text-[36px] text-ink mb-2">
               Plan the date ✦
@@ -51,7 +51,7 @@ export default function ScheduleModal({ open, onConfirm }: Props) {
               Choose a time that works for both of you.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 mb-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
               <div>
                 <label className="block text-[11px] tracking-[0.08em] uppercase text-muted mb-2">
                   Date
@@ -61,7 +61,7 @@ export default function ScheduleModal({ open, onConfirm }: Props) {
                   value={date}
                   min={today}
                   onChange={(e) => setDate(e.target.value)}
-                  className={inputCls}
+                  className={`${inputCls} pr-10`}
                 />
               </div>
               <div>
@@ -72,7 +72,7 @@ export default function ScheduleModal({ open, onConfirm }: Props) {
                   type="time"
                   value={time}
                   onChange={(e) => setTime(e.target.value)}
-                  className={inputCls}
+                  className={`${inputCls} pr-10`}
                 />
               </div>
             </div>
