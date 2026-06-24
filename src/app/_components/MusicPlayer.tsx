@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 interface Props {
   videoId: string;
@@ -8,44 +8,41 @@ interface Props {
 }
 
 export default function MusicPlayer({ videoId, autoplay = true }: Props) {
-  const [playing, setPlaying] = useState(false);
+  const [isIOS] = useState(() => {
+    if (typeof navigator === "undefined") return false;
+    return (
+      /iPad|iPhone|iPod/.test(navigator.userAgent) &&
+      !(window as unknown as { MSStream?: unknown }).MSStream
+    );
+  });
   const [userStarted, setUserStarted] = useState(false);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-
-  // On non-iOS browsers, start automatically on mount
-  useEffect(() => {
-    if (!autoplay) return;
-    const isIOS =
-      /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as unknown as { MSStream?: unknown }).MSStream;
-    if (!isIOS) {
-      setPlaying(true);
-    }
-  }, [autoplay]);
 
   const handlePlay = () => {
     setUserStarted(true);
-    setPlaying(true);
   };
 
   if (!videoId) return null;
 
-  const src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}&controls=0&mute=0&enablejsapi=1`;
+  const shouldAutoPlay = autoplay && (!isIOS || userStarted);
+  const src = `https://www.youtube.com/embed/${videoId}?autoplay=${
+    shouldAutoPlay ? 1 : 0
+  }&loop=1&playlist=${videoId}&controls=0&mute=0&playsinline=1&rel=0&modestbranding=1`;
 
   return (
     <>
-      {playing && (
+      {autoplay && (
         <iframe
-          ref={iframeRef}
           src={src}
-          allow="autoplay; encrypted-media"
-          className="absolute w-0 h-0 opacity-0 pointer-events-none"
+          allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+          className="absolute -left-[9999px] top-0 w-[1px] h-[1px] opacity-0 pointer-events-none"
           title="background music"
+          referrerPolicy="origin"
         />
       )}
-      {!playing && autoplay && !userStarted && (
+      {autoplay && isIOS && !userStarted && (
         <button
           onClick={handlePlay}
-          className="fixed bottom-4 right-4 z-50 flex items-center gap-2 bg-white/80 backdrop-blur-sm text-pink-500 rounded-full px-4 py-2 shadow-lg text-sm font-medium border border-pink-200 active:scale-95 transition-transform"
+          className="fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 rounded-full border border-pink-200 bg-white/90 px-4 py-3 text-sm font-medium text-pink-500 shadow-lg backdrop-blur-sm active:scale-95 transition-transform"
           aria-label="Дуу тоглуулах"
         >
           <span>♪</span>

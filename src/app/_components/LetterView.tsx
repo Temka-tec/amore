@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { acceptDate } from "@/actions/acceptDate";
@@ -56,7 +56,6 @@ const themeConfig = {
 
 export default function LetterView({ letter }: { letter: LetterData }) {
   const [opened, setOpened] = useState(false);
-  const [musicReady, setMusicReady] = useState(false);
   const [scheduleOpen, setScheduleOpen] = useState(false);
   const [accepted, setAccepted] = useState(letter.accepted);
   const [confirmedSchedule, setConfirmedSchedule] = useState({
@@ -65,14 +64,6 @@ export default function LetterView({ letter }: { letter: LetterData }) {
     location: letter.meetLocation,
   });
   const t = themeConfig[letter.theme];
-
-  // Start music slightly after letter opens
-  useEffect(() => {
-    if (opened && letter.youtubeId) {
-      const timer = setTimeout(() => setMusicReady(true), 1200);
-      return () => clearTimeout(timer);
-    }
-  }, [opened, letter.youtubeId]);
 
   async function handleAcceptDate(data: {
     date: string;
@@ -164,7 +155,7 @@ export default function LetterView({ letter }: { letter: LetterData }) {
       </div>
 
       {/* Hidden music player */}
-      {musicReady && letter.youtubeId && (
+      {opened && letter.youtubeId && (
         <MusicPlayer videoId={letter.youtubeId} autoplay={true} />
       )}
 

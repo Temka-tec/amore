@@ -21,12 +21,12 @@ export default function Hero() {
             <>
               <SignInButton>
                 <button className="text-[13px] text-muted border border-muted/30 hover:border-rose hover:text-rose rounded-full px-4 py-2 transition-all duration-200">
-                  Sign in
+                  Нэвтрэх
                 </button>
               </SignInButton>
               <SignUpButton>
                 <button className="text-[13px] bg-rose text-white rounded-full px-4 py-2 hover:bg-rose-dark transition-all duration-200 shadow-[0_4px_12px_rgba(201,80,90,0.25)]">
-                  Sign up
+                  Бүртгүүлэх
                 </button>
               </SignUpButton>
             </>
@@ -99,7 +99,7 @@ export default function Hero() {
           transition={{ duration: 0.7 }}
           className="inline-flex items-center gap-2 bg-rose/10 text-rose border border-rose/25 text-[11px] tracking-[0.08em] uppercase px-4 py-1.5 rounded-full mb-8"
         >
-          ✦ the most unforgettable way to ask
+          ✦ Хайраа илэрхийлэх хамгийн мартагдашгүй арга
         </motion.div>
 
         <motion.h1
@@ -108,8 +108,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="font-cormorant font-light text-[clamp(44px,7vw,80px)] leading-[1.1] text-ink mb-5"
         >
-          Say it with a<br />
-          <em className="italic text-rose">love letter</em>
+          Хайрын захиагаар<br />
+          <em className="italic text-rose">хэлээрэй</em>
         </motion.h1>
 
         <motion.p
@@ -118,8 +118,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-muted text-[16px] font-light leading-relaxed max-w-md mb-11"
         >
-          Create a digital love letter with music, animation, and a surprise
-          invitation — they&apos;ll never forget.
+          Хөгжим, хөдөлгөөнт эффект, гэнэтийн урилгатай дижитал хайрын захиа
+          бүтээгээрэй — тэд үүнийг хэзээ ч мартахгүй.
         </motion.p>
 
         <motion.div
@@ -132,13 +132,13 @@ export default function Hero() {
             href="/create"
             className="inline-flex items-center gap-2 bg-rose text-white px-9 py-4 rounded-full text-[15px] shadow-[0_8px_32px_rgba(201,80,90,0.35)] hover:bg-rose-dark hover:-translate-y-0.5 hover:shadow-[0_14px_40px_rgba(201,80,90,0.45)] transition-all duration-300"
           >
-            ✦ Create a letter
+            ✦ Захиа үүсгэх
           </Link>
           <Link
             href="/open"
             className="inline-flex items-center gap-2 bg-transparent text-ink border border-ink/20 px-9 py-4 rounded-full text-[15px] hover:border-rose hover:text-rose hover:-translate-y-0.5 transition-all duration-300"
           >
-            ↗ Open a letter
+            ↗ Захиа нээх
           </Link>
         </motion.div>
 
@@ -150,9 +150,9 @@ export default function Hero() {
           className="flex flex-wrap gap-4 justify-center mt-20"
         >
           {[
-            { icon: "✉️", label: "Letters sent", val: "12,847" },
-            { icon: "💌", label: "Dates accepted", val: "9,203" },
-            { icon: "🎵", label: "Songs played", val: "48,129" },
+            { icon: "✉️", label: "Илгээсэн захиа", val: "12,847" },
+            { icon: "💌", label: "Зөвшөөрсөн болзоо", val: "9,203" },
+            { icon: "🎵", label: "Тоглогдсон дуу", val: "48,129" },
           ].map((stat) => (
             <div
               key={stat.label}
