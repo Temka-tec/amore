@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { HeartIcon, MusicNoteIcon, SparklesIcon } from "@/app/_components/Icons";
 import type { Theme } from "@/lib/utils";
 
 interface Props {
@@ -52,7 +53,7 @@ export default function LetterCard({
       <div className="relative p-8 min-h-[360px]">
         {/* Floating hearts bg */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {["♡", "✦", "♡"].map((h, i) => (
+          {[HeartIcon, SparklesIcon, HeartIcon].map((Icon, i) => (
             <motion.span
               key={i}
               className={`absolute text-2xl ${s.heart}`}
@@ -68,7 +69,7 @@ export default function LetterCard({
                 ease: "easeInOut",
               }}
             >
-              {h}
+              <Icon className="h-6 w-6" />
             </motion.span>
           ))}
         </div>
@@ -97,7 +98,7 @@ export default function LetterCard({
           <span
             className={`text-[12px] flex items-center gap-1.5 ${s.subtext}`}
           >
-            ♪{" "}
+            <MusicNoteIcon className="h-3.5 w-3.5 shrink-0" />
             {youtubeId ? (
               <span className="truncate max-w-[120px]">{youtubeId}</span>
             ) : (
@@ -105,9 +106,9 @@ export default function LetterCard({
             )}
           </span>
           <span
-            className={`text-[12px] px-4 py-1.5 rounded-full ${s.acceptBg}`}
+            className={`text-[12px] px-4 py-1.5 rounded-full inline-flex items-center gap-1.5 ${s.acceptBg}`}
           >
-            Accept ❤
+            Accept <HeartIcon className="h-3.5 w-3.5" />
           </span>
         </div>
       </div>

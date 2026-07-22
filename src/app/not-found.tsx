@@ -1,9 +1,12 @@
 import Link from "next/link";
+import { BrokenHeartIcon } from "@/app/_components/Icons";
 
 export default function NotFound() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#FBF5F0] via-[#F5E8E8] to-[#EFE0EC] flex flex-col items-center justify-center px-5 text-center">
-      <div className="text-6xl mb-6">💔</div>
+      <div className="mb-6 flex justify-center">
+        <BrokenHeartIcon className="h-14 w-14 text-rose" />
+      </div>
       <h1 className="font-cormorant font-light italic text-[52px] text-ink mb-3 leading-tight">
         Letter not found
       </h1>

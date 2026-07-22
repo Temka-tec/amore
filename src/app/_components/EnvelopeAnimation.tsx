@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { MailIcon } from "@/app/_components/Icons";
 
 interface Props {
   onOpen: () => void;
@@ -59,7 +60,7 @@ export default function EnvelopeAnimation({ onOpen }: Props) {
           whileHover={{ y: -10, scale: 0.8, opacity: 0 }}
           transition={{ duration: 0.35 }}
         >
-          💌
+          <MailIcon className="h-5 w-5 text-white" />
         </motion.div>
       </motion.div>
 

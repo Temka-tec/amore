@@ -5,6 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { acceptDate } from "@/actions/acceptDate";
 import EnvelopeAnimation from "@/app/_components/EnvelopeAnimation";
+import {
+  HeartIcon,
+  MailIcon,
+  SparklesIcon,
+} from "@/app/_components/Icons";
 import MusicPlayer from "@/app/_components/MusicPlayer";
 import RejectButton from "@/app/_components/RejectButton";
 import ScheduleModal from "@/app/_components/ScheduleModal";
@@ -122,7 +127,7 @@ export default function LetterView({ letter }: { letter: LetterData }) {
             letter.theme === "night" ? "text-starlight" : "text-rose"
           }`}
         >
-          amare ♡
+          amare <HeartIcon className="mb-0.5 inline-block h-4 w-4" />
         </Link>
       </nav>
 
@@ -149,7 +154,7 @@ export default function LetterView({ letter }: { letter: LetterData }) {
                 ease: "easeIn",
               }}
             >
-              ♡
+              <HeartIcon className="h-5 w-5" />
             </motion.span>
           ))}
       </div>
@@ -192,7 +197,8 @@ export default function LetterView({ letter }: { letter: LetterData }) {
                     className="text-center mb-6 space-y-2"
                   >
                     <span className="inline-flex items-center gap-2 bg-rose text-white text-[13px] px-5 py-2 rounded-full shadow-[0_4px_16px_rgba(201,80,90,0.4)]">
-                      ❤ Date confirmed — check your email!
+                      <MailIcon className="h-4 w-4" />
+                      Date confirmed - check your email!
                     </span>
                     {confirmedSchedule.date && confirmedSchedule.time && (
                       <p className={`text-[13px] ${t.body}`}>
@@ -255,9 +261,9 @@ export default function LetterView({ letter }: { letter: LetterData }) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.97 }}
                       onClick={() => setScheduleOpen(true)}
-                      className="flex items-center gap-2 bg-rose text-white px-8 py-4 rounded-full text-[16px] shadow-[0_8px_24px_rgba(201,80,90,0.35)] animate-pulse-glow hover:bg-rose-dark transition-all"
+                    className="flex items-center gap-2 bg-rose text-white px-8 py-4 rounded-full text-[16px] shadow-[0_8px_24px_rgba(201,80,90,0.35)] animate-pulse-glow hover:bg-rose-dark transition-all"
                     >
-                      Accept ❤
+                      Accept <HeartIcon className="h-4 w-4" />
                     </motion.button>
                     <RejectButton />
                   </motion.div>
@@ -270,9 +276,10 @@ export default function LetterView({ letter }: { letter: LetterData }) {
                     className="text-center"
                   >
                     <p
-                      className={`font-cormorant italic text-[20px] ${t.body}`}
+                      className={`font-cormorant italic text-[20px] inline-flex items-center gap-2 ${t.body}`}
                     >
-                      See you soon… ✦
+                      See you soon...
+                      <SparklesIcon className="h-4 w-4" />
                     </p>
                   </motion.div>
                 )}

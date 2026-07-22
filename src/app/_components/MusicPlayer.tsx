@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { MusicNoteIcon } from "@/app/_components/Icons";
 
 interface Props {
   videoId: string;
@@ -45,7 +46,7 @@ export default function MusicPlayer({ videoId, autoplay = true }: Props) {
           className="fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 rounded-full border border-pink-200 bg-white/90 px-4 py-3 text-sm font-medium text-pink-500 shadow-lg backdrop-blur-sm active:scale-95 transition-transform"
           aria-label="Дуу тоглуулах"
         >
-          <span>♪</span>
+          <MusicNoteIcon className="h-4 w-4" />
           <span>Дуу тоглуулах</span>
         </button>
       )}

@@ -4,6 +4,11 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import {
+  ArrowUpRightIcon,
+  HeartIcon,
+  SparklesIcon,
+} from "@/app/_components/Icons";
 
 const starField = Array.from({ length: 80 }).map((_, i) => ({
   left: `${(i * 13 + 7) % 100}%`,
@@ -37,7 +42,7 @@ export default function OpenPage() {
           href="/"
           className="font-cormorant text-[22px] italic text-starlight/80"
         >
-          amare ♡
+          amare <HeartIcon className="mb-0.5 inline-block h-4 w-4" />
         </Link>
       </nav>
 
@@ -70,8 +75,9 @@ export default function OpenPage() {
         transition={{ duration: 0.7 }}
         className="relative z-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[28px] p-12 md:p-16 max-w-md w-full mx-5 text-center shadow-[0_32px_80px_rgba(0,0,0,0.5)]"
       >
-        <p className="text-[11px] tracking-[0.15em] uppercase text-starlight/50 mb-4">
-          ✦ someone is waiting
+        <p className="text-[11px] tracking-[0.15em] uppercase text-starlight/50 mb-4 inline-flex items-center gap-1.5">
+          <SparklesIcon className="h-3.5 w-3.5" />
+          someone is waiting
         </p>
         <h1 className="font-cormorant font-light italic text-[clamp(38px,6vw,52px)] text-starlight leading-[1.2] mb-10">
           Open your
@@ -96,9 +102,10 @@ export default function OpenPage() {
             type="submit"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full py-5 bg-gradient-to-r from-rose to-[#A0365F] text-white rounded-2xl text-[16px] shadow-[0_8px_32px_rgba(201,80,90,0.4)] hover:shadow-[0_14px_40px_rgba(201,80,90,0.5)] transition-all"
+            className="w-full py-5 bg-gradient-to-r from-rose to-[#A0365F] text-white rounded-2xl text-[16px] shadow-[0_8px_32px_rgba(201,80,90,0.4)] hover:shadow-[0_14px_40px_rgba(201,80,90,0.5)] transition-all inline-flex items-center justify-center gap-2"
           >
-            Open letter ↗
+            Open letter
+            <ArrowUpRightIcon className="h-4 w-4" />
           </motion.button>
         </form>
 

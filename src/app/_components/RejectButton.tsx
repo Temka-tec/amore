@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { BrokenHeartIcon } from "@/app/_components/Icons";
 
 export default function RejectButton() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
@@ -44,7 +45,7 @@ export default function RejectButton() {
       onTouchStart={flee}
       className="flex items-center gap-2 bg-transparent text-muted border-[1.5px] border-[#E0D0D4] px-7 py-4 rounded-full text-[15px] hover:text-[#B0A0A5] transition-colors cursor-pointer select-none"
     >
-      Reject 💔
+      Reject <BrokenHeartIcon className="h-4 w-4" />
     </motion.button>
   );
 }

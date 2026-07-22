@@ -6,6 +6,11 @@ import Link from "next/link";
 import { createLetter } from "@/actions/createLetter";
 import { extractYouTubeId } from "@/lib/youtube";
 import LetterCard from "@/app/_components/LetterCard";
+import {
+  CheckIcon,
+  HeartIcon,
+  SparklesIcon,
+} from "@/app/_components/Icons";
 import ThemeSelector from "@/app/_components/ThemeSelector";
 import type { Theme } from "@/lib/utils";
 
@@ -51,7 +56,7 @@ export default function CreateLetterClient() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-5 bg-[#FBF5F0]/80 backdrop-blur-md border-b border-rose-100/60">
         <Link href="/" className="font-cormorant text-[22px] italic text-rose">
-          amare ♡
+          amare <HeartIcon className="mb-0.5 inline-block h-4 w-4" />
         </Link>
         <Link
           href="/open"
@@ -69,7 +74,10 @@ export default function CreateLetterClient() {
           className="text-center mb-12"
         >
           <p className="text-[11px] tracking-[0.12em] uppercase text-rose mb-3">
-            ✦ write your heart
+            <span className="inline-flex items-center gap-1.5">
+              <SparklesIcon className="h-3.5 w-3.5" />
+              write your heart
+            </span>
           </p>
           <h1 className="font-cormorant font-light text-[clamp(36px,5vw,58px)] text-ink leading-tight">
             Craft your <em className="italic text-rose">letter</em>
@@ -147,7 +155,10 @@ export default function CreateLetterClient() {
                 />
                 {ytId && (
                   <p className="text-[12px] text-rose mt-1.5">
-                    ✓ Song detected: {ytId}
+                    <span className="inline-flex items-center gap-1">
+                      <CheckIcon className="h-3.5 w-3.5" />
+                      Song detected: {ytId}
+                    </span>
                   </p>
                 )}
               </div>
@@ -181,7 +192,14 @@ export default function CreateLetterClient() {
                 disabled={loading}
                 className="w-full py-4 bg-rose text-white rounded-2xl text-[16px] shadow-[0_8px_24px_rgba(201,80,90,0.3)] hover:bg-rose-dark hover:-translate-y-0.5 hover:shadow-[0_14px_32px_rgba(201,80,90,0.4)] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {loading ? "Creating…" : "Create letter ✦"}
+                {loading ? (
+                  "Creating…"
+                ) : (
+                  <span className="inline-flex items-center gap-2">
+                    Create letter
+                    <SparklesIcon className="h-4 w-4" />
+                  </span>
+                )}
               </button>
             </form>
           </motion.div>
@@ -203,7 +221,9 @@ export default function CreateLetterClient() {
               exit={{ scale: 0.9, y: 20 }}
               className="bg-white rounded-3xl p-12 max-w-md w-full text-center shadow-[0_40px_100px_rgba(0,0,0,0.25)]"
             >
-              <div className="text-5xl mb-5">💌</div>
+              <div className="mb-5 flex justify-center">
+                <HeartIcon className="h-12 w-12 text-rose" />
+              </div>
               <h2 className="font-cormorant font-light italic text-[38px] text-ink mb-3">
                 Letter created!
               </h2>
@@ -226,7 +246,15 @@ export default function CreateLetterClient() {
                 onClick={copyCode}
                 className="w-full py-4 bg-rose text-white rounded-xl text-[15px] shadow-[0_6px_20px_rgba(201,80,90,0.3)] hover:bg-rose-dark transition-all mb-3"
               >
-                {copied ? "Copied ✓" : "Copy code ✦"}
+                {copied ? (
+                  <span className="inline-flex items-center gap-2">
+                    Copied <CheckIcon className="h-4 w-4" />
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-2">
+                    Copy code <SparklesIcon className="h-4 w-4" />
+                  </span>
+                )}
               </button>
               <button
                 onClick={() => setGeneratedCode(null)}

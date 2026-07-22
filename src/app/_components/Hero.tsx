@@ -3,8 +3,15 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
+import {
+  ArrowUpRightIcon,
+  HeartIcon,
+  MailIcon,
+  MusicNoteIcon,
+  SparklesIcon,
+} from "@/app/_components/Icons";
 
-const floatingHearts = ["♡", "♥", "✦", "✿"];
+const floatingIcons = [HeartIcon, HeartIcon, SparklesIcon, SparklesIcon];
 
 export default function Hero() {
   const { isSignedIn } = useUser();
@@ -14,7 +21,7 @@ export default function Hero() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-5 bg-[#FBF5F0]/80 backdrop-blur-md border-b border-rose-100/60">
         <span className="font-cormorant text-[22px] italic text-rose">
-          amare ♡
+          amare <HeartIcon className="mb-0.5 inline-block h-4 w-4" />
         </span>
         <div className="flex items-center gap-3">
           {!isSignedIn ? (
@@ -86,7 +93,10 @@ export default function Hero() {
               ease: "easeIn",
             }}
           >
-            {floatingHearts[i % floatingHearts.length]}
+            {(() => {
+              const Icon = floatingIcons[i % floatingIcons.length];
+              return <Icon className="h-4 w-4" />;
+            })()}
           </motion.span>
         ))}
       </div>
@@ -99,7 +109,8 @@ export default function Hero() {
           transition={{ duration: 0.7 }}
           className="inline-flex items-center gap-2 bg-rose/10 text-rose border border-rose/25 text-[11px] tracking-[0.08em] uppercase px-4 py-1.5 rounded-full mb-8"
         >
-          ✦ Хайраа илэрхийлэх хамгийн мартагдашгүй арга
+          <SparklesIcon className="h-3.5 w-3.5" />
+          Хайраа илэрхийлэх хамгийн мартагдашгүй арга
         </motion.div>
 
         <motion.h1
@@ -132,13 +143,15 @@ export default function Hero() {
             href="/create"
             className="inline-flex items-center gap-2 bg-rose text-white px-9 py-4 rounded-full text-[15px] shadow-[0_8px_32px_rgba(201,80,90,0.35)] hover:bg-rose-dark hover:-translate-y-0.5 hover:shadow-[0_14px_40px_rgba(201,80,90,0.45)] transition-all duration-300"
           >
-            ✦ Захиа үүсгэх
+            <SparklesIcon className="h-4 w-4" />
+            Захиа үүсгэх
           </Link>
           <Link
             href="/open"
             className="inline-flex items-center gap-2 bg-transparent text-ink border border-ink/20 px-9 py-4 rounded-full text-[15px] hover:border-rose hover:text-rose hover:-translate-y-0.5 transition-all duration-300"
           >
-            ↗ Захиа нээх
+            <ArrowUpRightIcon className="h-4 w-4" />
+            Захиа нээх
           </Link>
         </motion.div>
 
@@ -150,15 +163,17 @@ export default function Hero() {
           className="flex flex-wrap gap-4 justify-center mt-20"
         >
           {[
-            { icon: "✉️", label: "Илгээсэн захиа", val: "12,847" },
-            { icon: "💌", label: "Зөвшөөрсөн болзоо", val: "9,203" },
-            { icon: "🎵", label: "Тоглогдсон дуу", val: "48,129" },
+            { icon: MailIcon, label: "Илгээсэн захиа", val: "12,847" },
+            { icon: HeartIcon, label: "Зөвшөөрсөн болзоо", val: "9,203" },
+            { icon: MusicNoteIcon, label: "Тоглогдсон дуу", val: "48,129" },
           ].map((stat) => (
             <div
               key={stat.label}
               className="bg-white/70 backdrop-blur-xl border border-rose/10 rounded-[20px] px-6 py-5 min-w-[160px] text-left shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
             >
-              <div className="text-[26px] mb-2">{stat.icon}</div>
+              <div className="mb-2">
+                <stat.icon className="h-6 w-6 text-rose" />
+              </div>
               <div className="text-[12px] text-muted font-light mb-1">
                 {stat.label}
               </div>

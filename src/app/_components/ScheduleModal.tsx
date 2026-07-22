@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { HeartIcon, SparklesIcon } from "@/app/_components/Icons";
 
 interface Props {
   open: boolean;
@@ -44,8 +45,9 @@ export default function ScheduleModal({ open, onConfirm }: Props) {
             exit={{ scale: 0.9, y: 20 }}
             className="bg-white rounded-3xl p-6 sm:p-10 max-w-md w-full shadow-[0_40px_100px_rgba(0,0,0,0.3)]"
           >
-            <h2 className="font-cormorant font-light italic text-[36px] text-ink mb-2">
-              Plan the date ✦
+            <h2 className="font-cormorant font-light italic text-[36px] text-ink mb-2 inline-flex items-center gap-2">
+              Plan the date
+              <SparklesIcon className="h-5 w-5" />
             </h2>
             <p className="text-[13px] text-muted mb-8">
               Choose a time that works for both of you.
@@ -95,9 +97,10 @@ export default function ScheduleModal({ open, onConfirm }: Props) {
             <button
               onClick={handleConfirm}
               disabled={loading}
-              className="w-full py-4 bg-rose text-white rounded-2xl text-[16px] shadow-[0_8px_24px_rgba(201,80,90,0.3)] hover:bg-rose-dark transition-all disabled:opacity-60"
+              className="w-full py-4 bg-rose text-white rounded-2xl text-[16px] shadow-[0_8px_24px_rgba(201,80,90,0.3)] hover:bg-rose-dark transition-all disabled:opacity-60 inline-flex items-center justify-center gap-2"
             >
-              {loading ? "Confirming…" : "Confirm date ❤"}
+              {loading ? "Confirming…" : "Confirm date"}
+              {!loading && <HeartIcon className="h-4 w-4" />}
             </button>
           </motion.div>
         </motion.div>

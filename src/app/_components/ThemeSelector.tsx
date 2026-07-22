@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CheckIcon } from "@/app/_components/Icons";
 import type { Theme } from "@/lib/utils";
 
 const themes: { id: Theme; label: string; colors: string[]; dark: boolean }[] =
@@ -70,7 +71,7 @@ export default function ThemeSelector({ value, onChange }: Props) {
           {/* Selected checkmark */}
           {value === theme.id && (
             <div className="absolute top-2 right-2 w-5 h-5 bg-rose rounded-full flex items-center justify-center">
-              <span className="text-white text-[10px]">✓</span>
+              <CheckIcon className="h-3 w-3 text-white" />
             </div>
           )}
         </motion.button>
